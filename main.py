@@ -1,7 +1,7 @@
 '''
 To-Do:
 - make it only show once
-- only show 2 decimal places
+- add time
 - show the increase / decrease
 - be green if increased, red if decreased
 - maybe turn into desktop/mobile/web app
@@ -26,14 +26,10 @@ def display_live_prices(tickers, refresh_rate=5):
     try:
         while True:
             os.system('cls' if os.name == 'nt' else 'clear') #Clears the console screen
-            
-            # Print table header
-            print(f"{'Ticker':<10} {'Price':<10}") #Format column titles
-            print("=" * 20)
-            
+            print()
             prices = get_stock_prices(tickers)
             for ticker, price in prices.items():
-                print(f"{ticker:<10} {price:<10}")
+                print(f"{ticker:<10} {price:<10.2f}")
             
             time.sleep(refresh_rate)
     except KeyboardInterrupt:
