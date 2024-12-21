@@ -39,7 +39,7 @@ def display_live_prices(tickers, refresh_rate=5):
     except KeyboardInterrupt:
         print("\nExiting live ticker display.")
 
-if __name__ == "__main__":
+if __name__ == "__main__":  # Ensures code is not run when imported as a module
     tickers = ["AAPL", "GOOGL", "AMZN", "MSFT", "TSLA"]
     refresh_rate = 5
     display_live_prices(tickers, refresh_rate)
