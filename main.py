@@ -1,3 +1,12 @@
+'''
+To-Do:
+- make it only show once
+- only show 2 decimal places
+- show the increase / decrease
+- be green if increased, red if decreased
+- maybe turn into desktop/mobile/web app
+'''
+
 import yfinance as yf
 import time
 import os
