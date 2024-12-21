@@ -1,7 +1,6 @@
 '''
 To-Do:
 - make it only show once
-- add time
 - show the increase / decrease
 - be green if increased, red if decreased
 - maybe turn into desktop/mobile/web app
@@ -30,7 +29,6 @@ def display_live_prices(tickers, refresh_rate=5):
             prices = get_stock_prices(tickers)
             for ticker, price in prices.items():
                 print(f"{ticker:<10} {price:<10.2f}")
-            
             time.sleep(refresh_rate)
     except KeyboardInterrupt:
         print("\nExiting live ticker display.")
