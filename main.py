@@ -3,7 +3,6 @@ import time
 import os
 
 def get_stock_prices(tickers):
-    """Fetches the latest stock prices for a list of tickers."""
     prices = {}
     for ticker in tickers:
         stock = yf.Ticker(ticker)
@@ -15,15 +14,12 @@ def get_stock_prices(tickers):
     return prices
 
 def display_live_prices(tickers, refresh_rate=5):
-    """
-    Displays live stock prices in the console.
-    :param tickers: List of stock tickers to track.
-    :param refresh_rate: Time interval (in seconds) for updates.
-    """
     try:
         while True:
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print(f"{'Ticker':<10} {'Price':<10}")
+            os.system('cls' if os.name == 'nt' else 'clear') #Clears the console screen
+            
+            # Print table header
+            print(f"{'Ticker':<10} {'Price':<10}") #Format column titles
             print("=" * 20)
             
             prices = get_stock_prices(tickers)
@@ -35,6 +31,6 @@ def display_live_prices(tickers, refresh_rate=5):
         print("\nExiting live ticker display.")
 
 if __name__ == "__main__":
-    tickers = ["AAPL", "GOOGL", "AMZN", "MSFT", "TSLA"]  # Example tickers
-    refresh_rate = 5  # Update every 5 seconds
+    tickers = ["AAPL", "GOOGL", "AMZN", "MSFT", "TSLA"]
+    refresh_rate = 5
     display_live_prices(tickers, refresh_rate)
