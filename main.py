@@ -1,9 +1,12 @@
 '''
 To-Do:
-- make it only show once
-- show the increase / decrease
-- be green if increased, red if decreased
-- maybe turn into desktop/mobile/web app
+- Must:
+  - show the increase / decrease
+- If making it for console:
+  - make it only show once
+  - be green if increased, red if decreased
+Otherwise:
+  - maybe turn into desktop/mobile/web app
 '''
 
 import yfinance as yf
