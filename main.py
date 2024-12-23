@@ -1,11 +1,7 @@
-'''
-To-Do:
-- be green if increased, red if decreased
-'''
-
 import yfinance as yf
 import time
 import os
+from termcolor import colored
 
 def get_stocks(): #Needs to be worked on
     tickers = []
@@ -54,8 +50,15 @@ def display_live_prices(tickers, refresh_rate=5):
                 change_display = "N/A"
                 if change is not None:
                     change_display = f"{change:+.2f}"
+                    
+                colour = "yellow"
+                if change is not None:    
+                    if change > 0:
+                        colour = "green"
+                    elif change < 0:
+                        colour = "red"
                 
-                print(f"{ticker:<10} {price:<10.2f} {change_display:<10}")
+                print(colored(f"{ticker:<10} {price:<10.2f} {change_display:<10}", colour))
                 previous_prices[ticker] = price
             time.sleep(refresh_rate)
     except KeyboardInterrupt:
