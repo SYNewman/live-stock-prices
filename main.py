@@ -1,12 +1,7 @@
 '''
 To-Do:
-- Must:
-  - show the increase / decrease
-- If making it for console:
-  - make it only show once
-  - be green if increased, red if decreased
-Otherwise:
-  - maybe turn into desktop/mobile/web app
+- add column headers
+- be green if increased, red if decreased
 '''
 
 import yfinance as yf
@@ -25,13 +20,25 @@ def get_stock_prices(tickers):
     return prices
 
 def display_live_prices(tickers, refresh_rate=5):
+    previous_prices = {ticker: None for ticker in tickers}
     try:
         while True:
             os.system('cls' if os.name == 'nt' else 'clear') #Clears the console screen
-            print()
             prices = get_stock_prices(tickers)
+            
             for ticker, price in prices.items():
-                print(f"{ticker:<10} {price:<10.2f}")
+                # Calculate the change
+                change = None
+                if previous_prices[ticker] is not None:
+                    change = price - previous_prices[ticker]
+                
+                # Sets the code for the change
+                change_display = "N/A"
+                if change is not None:
+                    change_display = f"{change:+.2f}"
+                
+                print(f"{ticker:<10} {price:<10.2f} {change_display:<10}")
+                previous_prices[ticker] = price
             time.sleep(refresh_rate)
     except KeyboardInterrupt:
         print("\nExiting live ticker display.")
