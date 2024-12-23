@@ -1,12 +1,29 @@
 '''
 To-Do:
 - be green if increased, red if decreased
-- add function to add stocks from a text file
 '''
 
 import yfinance as yf
 import time
 import os
+
+def get_stocks(): #Needs to be worked on
+    tickers = []
+    special_characters = {'^', '$', '/', '!', '&', '#'}
+    try:
+        with open("tickers.txt", "r") as file:
+            for i in file:
+                try:
+                    stock = i.strip()
+                    if any(char in stock for char in special_characters):
+                        continue
+                    tickers.append(stock)
+                except Exception as exception_type:
+                    print(f"{stock} could not be loaded. The problem was: {exception_type}")
+        return tickers
+    except Exception as exception_type:
+        print(f"List of Stocks could not be loaded. The problem was: {exception_type}")
+        raise
 
 def get_stock_prices(tickers):
     prices = {}
