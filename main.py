@@ -1,7 +1,7 @@
 '''
 To-Do:
-- add column headers
 - be green if increased, red if decreased
+- add function to add stocks from a text file
 '''
 
 import yfinance as yf
@@ -25,6 +25,7 @@ def display_live_prices(tickers, refresh_rate=5):
         while True:
             os.system('cls' if os.name == 'nt' else 'clear') #Clears the console screen
             prices = get_stock_prices(tickers)
+            print(f"{'Stock':<10} {'Price':<10} {'Change':<10}")
             
             for ticker, price in prices.items():
                 # Calculate the change
